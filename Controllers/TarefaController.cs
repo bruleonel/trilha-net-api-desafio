@@ -114,25 +114,18 @@ namespace TrilhaApiDesafio.Controllers
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
-            Console.WriteLine("Esta ação será irreversível, você tem certeza que deseja deletar tarefa? (1-sim/2-não)");
-            int resposta = int.Parse(Console.ReadLine());
 
-            if (resposta == 1)
-            {
                 var tarefaBanco = _context.Tarefas.Find(id);
 
                 if (tarefaBanco == null)
                     return NotFound();
 
                 // TODO: Remover a tarefa encontrada através do EF e salvar as mudanças (save changes)
-                var contatoBanco = _context.Tarefas.Find(id);
 
-                if (contatoBanco == null)
-                    return NotFound();
-
-                _context.Tarefas.Remove(contatoBanco);
+                _context.Tarefas.Remove(tarefaBanco);
                 _context.SaveChanges();
 
+                return NoContent();
         }
     }
 }
