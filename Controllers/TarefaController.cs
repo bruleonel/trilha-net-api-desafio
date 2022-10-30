@@ -133,10 +133,6 @@ namespace TrilhaApiDesafio.Controllers
                 _context.Tarefas.Remove(contatoBanco);
                 _context.SaveChanges();
 
-                return NoContent();
-            } else {
-                return Ok();
-            }
         }
     }
 }
